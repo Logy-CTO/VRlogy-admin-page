@@ -79,19 +79,11 @@ public class PurchasedCartController {
         return response;
     }
     @GetMapping("/purchased-cart/sales-overview")
-    public List<SalesData> getSalesOverview(@RequestParam("month") int month) {
-        // 이번 달의 시작일과 종료일을 계산합니다.
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.MONTH, month - 1); // 0부터 시작하는 인덱스로 변환하기 위해 -1을 해줍니다.
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        Date startDate = calendar.getTime();
+    public List<SalesData> getSalesOverview() {
+        // 조회할 매출 데이터가 없으므로, 시작일과 종료일 계산은 필요 없습니다.
 
-        calendar.add(Calendar.MONTH, 1);
-        calendar.add(Calendar.DAY_OF_MONTH, -1);
-        Date endDate = calendar.getTime();
-
-        // 해당 기간 내의 매출 데이터를 조회합니다.
-        List<PurchasedCart> salesDataList = purchasedCartRepository.findByPurchaseDateBetween(startDate, endDate);
+        // 모든 매출 데이터를 조회합니다.
+        List<PurchasedCart> salesDataList = purchasedCartRepository.findAll();
 
         // SalesData 리스트로 변환하여 반환합니다.
         List<SalesData> result = new ArrayList<>();
@@ -104,5 +96,4 @@ public class PurchasedCartController {
 
         return result;
     }
-
 }
