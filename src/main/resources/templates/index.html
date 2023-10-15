@@ -145,7 +145,7 @@
                     </select>
                   </div>
                 </div>
-                <div id="chart"></div>
+                <canvas id="chart"></canvas>
               </div>
             </div>
           </div>
@@ -466,60 +466,81 @@
       });
     });
 
-    function getSalesData(selectedMonth) {
-      $.ajax({
-        url: "/api/purchased-cart/sales-overview",
-        type: "GET",
-        data: { month: selectedMonth },
-        success: function (data) {
-          // Assuming data is in the format [{date: "2023-03-01", revenue: 1000}, ...]
-          var dates = data.map(item => item.date);
-          var revenue = data.map(item => item.revenue);
-
-          // Create a chart
-          var ctx = document.getElementById("chart").getContext("2d");
-          var myChart = new Chart(ctx, {
-            type: "line",
-            data: {
-              labels: dates,
-              datasets: [{
-                label: "Revenue",
-                data: revenue,
-                borderColor: "rgba(75, 192, 192, 1)",
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                x: {
-                  type: "time",
-                  time: {
-                    unit: "day",
-                    displayFormats: {
-                      day: "MMM D"
-                    }
-                  },
-                  title: {
-                    display: true,
-                    text: "Date"
-                  }
-                },
-                y: {
-                  beginAtZero: true,
-                  title: {
-                    display: true,
-                    text: "Revenue"
-                  }
-                }
-              }
-            }
-          });
+    $(document).ready(function () {
+      // Create a chart instance
+      var ctx = document.getElementById("chart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [{
+            label: "Revenue",
+            data: [],
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1
+          }]
         },
-        error: function (xhr, status, error) {
-          console.log(error);
+        options: {
+          scales: {
+            xAxes: [{
+              type:"time",
+              time:{
+                unit:"day",
+                displayFormats:{
+                  day:"MMM D"
+                }
+              },
+              scaleLabel:{
+                display:true,
+                labelString:"Date"
+              }
+            }],
+            yAxes:[{
+              ticks:{
+                beginAtZero:true
+              },
+              scaleLabel:{
+                display:true,
+                labelString:"Revenue"
+              }
+            }]
+          }
         }
       });
-    }
+
+      // Function to fetch sales data for the selected month and update the chart
+      function getSalesData(selectedMonth) {
+        $.ajax({
+          url: "/api/purchased-cart/sales-overview", // Adjust the URL as per your API endpoint
+          type: "GET",
+          data:{month:selectedMonth},
+          success:function(data){
+            // Assuming data is in the format [{date:'2023-03-01',revenue:'1000'},...]
+            var dates=data.map(item=>item.date);
+            var revenue=data.map(item=>item.revenue);
+
+            // Update chart labels and data
+            myChart.data.labels = dates;
+            myChart.data.datasets[0].data = revenue;
+
+            // Update chart to reflect changes in labels and data
+            myChart.update();
+          },
+          error:function(xhr,status,error){
+            console.log(error);
+          }
+        });
+      }
+
+      // Initial call with default selected month
+      getSalesData($("#monthSelect").val());
+
+      $("#monthSelect").change(function(){
+        var selectedMonth=$(this).val();
+        getSalesData(selectedMonth);
+      });
+    });
+
   </script>
 
 </body>

@@ -78,7 +78,7 @@ public class PurchasedCartController {
 
         return response;
     }
-    @GetMapping("/api/purchased-cart/sales-overview")
+    @GetMapping("/purchased-cart/sales-overview")
     public List<SalesData> getSalesOverview(@RequestParam("month") int month) {
         // 이번 달의 시작일과 종료일을 계산합니다.
         Calendar calendar = Calendar.getInstance();
