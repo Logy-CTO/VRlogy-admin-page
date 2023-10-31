@@ -125,10 +125,10 @@ public class MypageController {
             return ResponseEntity.ok(false); // 정보가 없으면 false 반환
         } else {
             boolean isMissingInfo =
-                    memberInfo.getAddress() == null ||
-                            memberInfo.getName() == null ||
-                            memberInfo.getPostcode() == null ||
-                            memberInfo.getPhoneNumber() == null;
+                        memberInfo.getAddress() == null ||
+                        memberInfo.getName() == null ||
+                        memberInfo.getPostcode() == null ||
+                        memberInfo.getPhoneNumber() == null;
 
             return ResponseEntity.ok(isMissingInfo); // 필수 정보가 누락되었으면 true 반환
         }

@@ -30,7 +30,7 @@ public class PurchasedCart {
 
     private String name;
 
-    @Column(name = "shipping_address")
+    @Column(name = "address")
     private String address;
 
     @Column(name = "post_code")

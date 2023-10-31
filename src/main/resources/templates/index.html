@@ -213,108 +213,44 @@
       </div>
     </div>
 
-
     <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-4 d-flex align-items-stretch">
-            <div class="card w-100">
-              <div class="card-body p-4">
-                <div class="mb-4">
-                  <h5 class="card-title fw-semibold">Recent Transactions</h5>
-                </div>
-                <ul class="timeline-widget mb-0 position-relative mb-n5">
-                  <li class="timeline-item d-flex position-relative overflow-hidden">
-                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
-                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                      <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
-                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                    </div>
-                    <div class="timeline-desc fs-3 text-dark mt-n1">Payment received from John Doe of $385.90</div>
-                  </li>
-                  <li class="timeline-item d-flex position-relative overflow-hidden">
-                    <div class="timeline-time text-dark flex-shrink-0 text-end">10:00 am</div>
-                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                      <span class="timeline-badge border-2 border border-info flex-shrink-0 my-8"></span>
-                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                    </div>
-                    <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New sale recorded <a
-                            href="javascript:void(0)" class="text-primary d-block fw-normal">#ML-3467</a>
-                    </div>
-                  </li>
-                  <li class="timeline-item d-flex position-relative overflow-hidden">
-                    <div class="timeline-time text-dark flex-shrink-0 text-end">12:00 am</div>
-                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                      <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                    </div>
-                    <div class="timeline-desc fs-3 text-dark mt-n1">Payment was made of $64.95 to Michael</div>
-                  </li>
-                  <li class="timeline-item d-flex position-relative overflow-hidden">
-                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
-                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                      <span class="timeline-badge border-2 border border-warning flex-shrink-0 my-8"></span>
-                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                    </div>
-                    <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New sale recorded <a
-                            href="javascript:void(0)" class="text-primary d-block fw-normal">#ML-3467</a>
-                    </div>
-                  </li>
-                  <li class="timeline-item d-flex position-relative overflow-hidden">
-                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
-                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                      <span class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"></span>
-                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                    </div>
-                    <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New arrival recorded
-                    </div>
-                  </li>
-                  <li class="timeline-item d-flex position-relative overflow-hidden">
-                    <div class="timeline-time text-dark flex-shrink-0 text-end">12:00 am</div>
-                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                      <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-                    </div>
-                    <div class="timeline-desc fs-3 text-dark mt-n1">Payment Done</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-            <div class="col-lg-8 d-flex align-items-stretch">
-              <div class="card w-100">
-                <div class="card-body p-4">
+      <!-- Row 1 -->
+      <div class="row">
+        <div class="col-lg-8 mx-auto"> <!-- mx-auto 클래스 추가 -->
+          <div class="card" style="width: 120%;">
+            <div class="card-body">
+              <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                <div class="mb-3 mb-sm-0">
                   <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
                   <div class="table-responsive">
                     <table id="transactionsTable" class="table text-nowrap mb-0 align-middle">
                       <thead class="text-dark fs-4">
-                    <tr>
-                      <th>Product Name</th>
-                      <th>Amount</th>
-                      <th>Member Email</th>
-                      <th>Purchase Date</th>
-                      <th>Name</th>
-                      <th>Address</th> <!-- 여기 수정 -->
-                      <th>Post Code</th> <!-- 여기 수정 -->
-                      <th>Phone Number</th> <!-- 여기 수정 -->
-                      <th>Apply Number</th> <!-- 여기 수정 -->
-                    </tr>
-                    </thead>
-                    <!-- 서버에서 데이터를 받아와서 동적으로 테이블 내용을 생성합니다. -->
-                    <!-- JavaScript 코드로 구현합니다. -->
-                    <!-- AJAX 요청을 사용하여 서버로부터 데이터를 가져옵니다. -->
-                    <!-- tbody 태그 추가 -->
-                    <!-- 실제 데이터가 들어갈 자리입니다 -->
-                    <tbody></tbody> <!-- 여기 수정 -->
+                      <tr>
+                        <th>Product Name</th>
+                        <th>Amount</th>
+                        <th>Member Email</th>
+                        <th>Purchase Date</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Post Code</th>
+                        <th>Phone Number</th>
+                        <th>Apply Number</th>
+                      </tr>
+                      </thead>
+                      <tbody></tbody>
                     </table>
                   </div>
                 </div>
               </div>
-            </div> <!-- 이 부분을 추가합니다 -->
-        </div> <!-- row 닫는 태그 위치를 조정합니다 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
           <div class="py-6 px-6 text-center">
           <p class="mb-0 fs-4">Design and Developed by <a href="https://www.vrlogy.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">vrlogy.com</a> Distributed by <a href="https://github.com/Logy-CTO">Logy-CTO</a></p>
-        </div>
+          </div>
       </div>
     </div>
   </div>
@@ -457,9 +393,19 @@
                     "<td>" + item.postCode + "</td>" +
                     "<td>" + item.phoneNumber + "</td>" +
                     "<td>" + item.applyNum + "</td>" +
+                    "<td><button class='btn btn-danger delete-btn'>Delete</button></td>" + // 삭제 버튼 추가
                     "</tr>";
 
             tableBody.append(rowContent);
+          });
+
+          // 삭제 버튼에 대한 클릭 이벤트 처리
+          $(".delete-btn").click(function() {
+            var row = $(this).closest("tr");
+            var applyNum = row.find("td:eq(8)").text(); // applyNum이 위치한 열의 인덱스는 8입니다.
+
+            // 여기에서 applyNum을 이용하여 삭제 작업을 수행하는 함수 호출
+            deleteTransaction(applyNum);
           });
         },
         error: function(xhr, status, error) {
@@ -467,6 +413,11 @@
         }
       });
     });
+
+    function deleteTransaction(applyNum) {
+      // applyNum을 이용하여 삭제 작업을 수행하는 AJAX 요청을 보내는 코드를 추가하세요.
+      // 삭제 작업이 완료되면 화면에서 해당 행을 제거하면 됩니다.
+    }
 
     $(document).ready(function () {
       // Create a chart instance
