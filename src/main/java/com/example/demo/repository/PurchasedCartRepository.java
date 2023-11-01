@@ -14,4 +14,7 @@ public interface PurchasedCartRepository extends JpaRepository<PurchasedCart, Lo
     BigDecimal sumAmountByPurchaseDateBetween(@Param("startDate") Date startDate,
                                               @Param("endDate") Date endDate);
     List<PurchasedCart> findByPurchaseDateBetween(Date startDate, Date endDate);
+
+    void deleteByApplyNum(String applyNum);
+
 }

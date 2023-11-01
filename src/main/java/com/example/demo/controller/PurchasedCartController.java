@@ -4,11 +4,11 @@ import com.example.demo.domain.PurchasedCart;
 import com.example.demo.domain.SalesData;
 import com.example.demo.repository.PurchasedCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -22,6 +22,18 @@ public class PurchasedCartController {
     @GetMapping("/purchased-cart")
     public List<PurchasedCart> getAllPurchasedCarts() {
         return purchasedCartRepository.findAll();
+    }
+
+    @Transactional
+    @DeleteMapping("/delete-transaction/{applyNum}")
+    public ResponseEntity<String> deleteTransaction(@PathVariable("applyNum") String applyNum) {
+        try {
+            System.out.println("Received applyNum: " + applyNum); // 디버깅을 위해 콘솔에 applyNum 출력
+            purchasedCartRepository.deleteByApplyNum(applyNum);
+            return ResponseEntity.ok("Transaction deleted successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting transaction");
+        }
     }
 
     @GetMapping("/purchased-cart/monthly-earnings")
